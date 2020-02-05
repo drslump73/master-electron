@@ -33,9 +33,6 @@ function createWindow () {
 
   state.manage(mainWindow)
 
-  // Open DevTools - Remove for PRODUCTION!
-  mainWindow.webContents.openDevTools()
-
   // Listen for window being closed
   mainWindow.on('closed',  () => {
     mainWindow = null
