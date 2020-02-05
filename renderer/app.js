@@ -8,6 +8,27 @@ let addItem = document.getElementById('add-item')
 let itemUrl = document.getElementById('url')
 let search = document.getElementById('search')
 
+window.newItem = () => {
+  showModal.click()
+}
+
+window.openItem = () => {
+  items.open()
+}
+
+window.deleteItem = () => {
+  let selectedItem = items.getSelectedItem()
+  items.delete(selectedItem.index)
+}
+
+window.openItemNative = () => {
+  items.openNative()
+}
+
+window.searchItem = () => {
+  search.focus()
+}
+
 search.addEventListener('keyup', e => {
   Array.from(document.getElementsByClassName('read-item')).forEach( item => {
     let hasMatch = item.innerText.toLowerCase().includes(search.value)

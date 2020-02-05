@@ -1,5 +1,6 @@
 let items = document.getElementById('items')
 const fs = require('fs')
+const {shell} = require('electron')
 
 let readerJS
 fs.readFile(`${__dirname}/reader.js`, (err, data) => {
@@ -78,6 +79,13 @@ exports.open = () => {
 
   readerWin.eval(readerJS.replace('{{index}}', selectedItem.index))
 
+}
+
+exports.openNative = () => {
+  if (!this.storage.length ) return
+
+  let selectedItem = this.getSelectedItem()
+  shell.openExternal(selectedItem.node.dataset.url)
 }
 
 exports.addItem = (item, isNew = false) => {
